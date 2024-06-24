@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Upload Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="file"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        input[type="submit"] {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+        .alert {
+            display: none;
+            color: red;
+            margin-top: -15px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+    </style>
+    <script>
+        function validateFileSize(input) {
+            const file = input.files[0];
+            const alertBox = document.getElementById('alert');
+            if (file) {
+                const maxSize = 200 * 1024; // 200KB in bytes
+                if (file.size > maxSize) {
+                    alertBox.style.display = 'block';
+                    input.value = ''; // Clear the input field
+                } else {
+                    alertBox.style.display = 'none';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Application Form</h2>
+        <form>
+            <!-- Other form fields -->
+
+            <label for="document">Upload Document (max 200KB):</label>
+            <input type="file" id="document" name="document" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" onchange="validateFileSize(this)">
+            <div id="alert" class="alert">File size must be within 200KB.</div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
