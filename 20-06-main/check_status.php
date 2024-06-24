@@ -17,6 +17,7 @@
     <button id="toggleButton">☰</button>
     <div id="dashboard" class="dashboard">
         <h2>Dashboard</h2>
+        <button class="dashboard-button" id="button0">Home</button>
         <button class="dashboard-button" id="button1">Student Grievance</button>
         <button class="dashboard-button" id="button2">Grievance Status</button>
         <button class="dashboard-button">Faculties</button>
@@ -99,4 +100,9 @@ while ($row = $result->fetch_assoc()) {
 
 </body>
 <script src="script/check_status.js"></script>
+<script>  document.getElementById('button0').addEventListener('click', function() {
+        window.location.href = 'home.php'; 
+    });
+
+</script>
 </html>

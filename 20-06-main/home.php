@@ -65,7 +65,7 @@
   </div>
   <section id="home">
     <div class="hero">
-      <h1>Welcome to Our University !!!</h1><br><br>
+      <h1>Welcome to Our University</h1><br><br>
     </div>
   </section>
   
@@ -163,33 +163,29 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
   document.getElementById('toggleButton').addEventListener('click', function() {
-    var dashboard = document.getElementById('dashboard');
-    dashboard.classList.toggle('open');
-  });
-  
+  var dashboard = document.getElementById('dashboard');
+  dashboard.classList.toggle('open');
+});
+
+document.getElementById('button1').addEventListener('click', function() {
+  window.location.href = 'grievances.html'; 
+});
+document.getElementById('button2').addEventListener('click', function() {
+  window.location.href = 'status_check.html'; 
+});
+document.getElementById('button3').addEventListener('click', function() {
+  window.location.href = 'login.php'; 
+});
 
 
+document.addEventListener('click', function(event) {
+  var dashboard = document.getElementById('dashboard');
+  var toggleButton = document.getElementById('toggleButton');
+  if (!dashboard.contains(event.target) && !toggleButton.contains(event.target)) {
+    dashboard.classList.remove('open');
+  }
+});
 
- 
-  document.getElementById('button1').addEventListener('click', function() {
-    window.location.href = 'grievances.html'; 
-  });
-  document.getElementById('button2').addEventListener('click', function() {
-    window.location.href = 'status_check.html'; 
-  });
-  document.getElementById('button3').addEventListener('click', function() {
-    window.location.href = 'login.php'; 
-  });
- 
-
-
-  document.addEventListener('click', function(event) {
-    var dashboard = document.getElementById('dashboard');
-    var toggleButton = document.getElementById('toggleButton');
-    if (!dashboard.contains(event.target) && !toggleButton.contains(event.target)) {
-      dashboard.classList.remove('open');
-    }
-  });
 </script>
 </body>
 

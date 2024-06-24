@@ -86,6 +86,7 @@ if (move_uploaded_file($_FILES["idCard"]["tmp_name"], $target_file)) {
         <button id="toggleButton">☰</button>
         <div id="dashboard" class="dashboard">
             <h2>Dashboard</h2>
+            <button class="dashboard-button" id="button0">Home</button>
             <button class="dashboard-button" id="button1">Student Grievance</button>
             <button class="dashboard-button" id="button2">Grievance Status</button>
             <button class="dashboard-button">Faculties</button>
@@ -285,7 +286,14 @@ document.addEventListener("DOMContentLoaded", function () {
             // No default action
             break;
     }
-});</script>
+});
+document.getElementById('button0').addEventListener('click', function() {
+        window.location.href = 'home.php'; 
+    });
+
+
+
+</script>
 
 </body>
 
