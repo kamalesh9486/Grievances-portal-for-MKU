@@ -78,9 +78,11 @@ while ($row = $result->fetch_assoc()) {
     echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
     echo "<td>" . htmlspecialchars($row['grievance_type']) . "</td>";
     echo "<td>" . htmlspecialchars($row['status']) . "</td>";
-    echo "<td><button type='button' class='btn btn-primary view-details' data-timestamp='" . htmlspecialchars($row['created_at']) . "'>View Details</button></td>";
+    // Include data-status attribute with the status value
+    echo "<td><button type='button' class='btn btn-primary view-details' data-register_number='" . htmlspecialchars($row['register_number']) . "' data-timestamp='" . htmlspecialchars($row['created_at']) . "' data-status='" . htmlspecialchars($row['status']) . "'>View Details</button></td>";
     echo "</tr>";
 }
+
 
 
             echo "</table>";

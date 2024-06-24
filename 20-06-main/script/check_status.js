@@ -23,8 +23,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add event listener for "View Details" buttons
     document.querySelectorAll('.view-details').forEach(button => {
         button.addEventListener('click', function() {
+            var status = this.getAttribute('data-status');
             var timestamp = this.getAttribute('data-timestamp');
-            window.location.href = 'view_details.php?timestamp=' + encodeURIComponent(timestamp);
+            
+            // Check the status value
+            if (status === 'In Process') {
+                window.location.href = 'view_details.php?timestamp=' + encodeURIComponent(timestamp);
+            } else {
+                window.location.href = 'message_description.php?timestamp=' + encodeURIComponent(timestamp);
+            }
         });
     });
 });

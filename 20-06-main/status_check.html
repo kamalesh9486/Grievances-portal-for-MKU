@@ -7,6 +7,12 @@
    
    
    <link rel="stylesheet" href="css/status_check.css">
+   <style>
+     .error {
+            color: red;
+            font-size: 12px;
+        }
+   </style>
 </head>
 <body>
     <header>
@@ -29,6 +35,8 @@
         <form action="check_status.php" method="post">
             <label for="registerNumber">Register Number:</label><br>
             <input type="text" id="registerNumber" name="registerNumber" required><br>
+            <small id="error" class="error" style="display: none;"></small>
+
             <input type="submit" value="Check Status">
         </form>
         <a href="home.php">Back to Home</a>
@@ -37,7 +45,39 @@
    
 </body>
 <script src="script/toggle.js"></script>
-<script> document.getElementById('button0').addEventListener('click', function() {
+<script> 
+        document.getElementById('registerNumber').addEventListener('input', validateInput);
+
+function validateInput() {
+    const regNumber = document.getElementById('registerNumber').value;
+    const errorElement = document.getElementById('error');
+    const regNumberPattern = /^[a-zA-Z0-9]{10}$|^[a-zA-Z0-9]{13}$/;
+
+    if (regNumberPattern.test(regNumber)) {
+        errorElement.style.display = 'none';
+    } else {
+        errorElement.textContent = '* Registration number must be either 10 or 13 characters long ';
+        errorElement.style.display = 'block';
+    }
+}
+
+function validateForm() {
+    const regNumber = document.getElementById('registerNumber').value;
+    const regNumberPattern = /^[a-zA-Z0-9]{10}$|^[a-zA-Z0-9]{13}$/;
+
+    if (!regNumberPattern.test(regNumber)) {
+        return false;
+    }
+
+    return true;
+}
+
+
+
+
+
+
+document.getElementById('button0').addEventListener('click', function() {
     window.location.href = 'home.php'; 
 });
 

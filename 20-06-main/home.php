@@ -8,6 +8,21 @@
   <link rel="stylesheet" href="css/toggle.css">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
+     /* CSS for sliding in from the left for heading */
+     @keyframes slideInLeft {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    .slide-in-left {
+      display: inline-block; /* Ensures the heading can be animated */
+      animation: slideInLeft 2s ease-out; /* Duration and easing of the animation */
+    }
     .card {
       height: 100%;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -63,12 +78,12 @@
     <button class="dashboard-button">Administration</button>
     <button class="dashboard-button">Library</button>
   </div>
-  <section id="home">
-    <div class="hero">
-      <h1>Welcome to Our University</h1><br><br>
-    </div>
-  </section>
-  
+  <section id="home" class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+  <div class="hero">
+    <h1 class="slide-in-left display-20">Welcome to Our University</h1>
+  </div>
+</section>
+
   <div class="container mt-5">
     <div class="d-flex justify-content-between mb-4">
         <!-- Dropdown buttons can be added here if needed -->

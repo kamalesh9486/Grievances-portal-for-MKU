@@ -114,7 +114,7 @@ K.K. Nagar (West), Chennai - 600078." required></textarea>
             if (regNumberPattern.test(regNumber)) {
                 errorElement.style.display = 'none';
             } else {
-                errorElement.textContent = '* Registration number must be either 10 or 13 characters long and contain only letters and digits.';
+                errorElement.textContent = '* Registration number must be either 10 or 13 characters long ';
                 errorElement.style.display = 'block';
             }
         }
