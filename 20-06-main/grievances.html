@@ -13,8 +13,10 @@
     
     <div id="dashboard" class="dashboard">
       <h2>Dashboard</h2>
+      <button class="dashboard-button" id="button0">Home</button>
       <button class="dashboard-button" id="button1">Student Grievance</button>
       <button class="dashboard-button" id="button2">Grievance Status</button>
+      <button class="dashboard-button" id="button3">Admin Login</button>
       <button class="dashboard-button">Faculties</button>
       <button class="dashboard-button">Exams</button>
       <button class="dashboard-button">Administration</button>
@@ -24,6 +26,39 @@
 
     
     <script>
+         
+document.getElementById('toggleButton').addEventListener('click', function() {
+  var dashboard = document.getElementById('dashboard');
+  dashboard.classList.toggle('open');
+});
+
+document.getElementById('button1').addEventListener('click', function() {
+  window.location.href = 'grievances.html'; 
+});
+document.getElementById('button2').addEventListener('click', function() {
+  window.location.href = 'status_check.html'; 
+});
+document.getElementById('button3').addEventListener('click', function() {
+  window.location.href = 'login.php'; 
+});
+
+
+document.addEventListener('click', function(event) {
+  var dashboard = document.getElementById('dashboard');
+  var toggleButton = document.getElementById('toggleButton');
+  if (!dashboard.contains(event.target) && !toggleButton.contains(event.target)) {
+    dashboard.classList.remove('open');
+  }
+});
+
+         
+         
+         document.getElementById('button0').addEventListener('click', function() {
+        window.location.href = 'home.php'; 
+    });
+
+
+
         document.addEventListener("DOMContentLoaded", function () {
             const buttons = document.querySelectorAll(".button[data-hc-control]");
             buttons.forEach(button => {
@@ -94,6 +129,5 @@
     </div>
 </body>
 
-   <script src="script/grievances.js"></script>
-   <script src="script/toggle.js"></script>
+
 </html>
