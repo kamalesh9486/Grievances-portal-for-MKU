@@ -11,6 +11,13 @@
             color: red;
             font-size: 12px;
         }
+        .alert {
+            display: none;
+            color: red;
+            margin-top: -15px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
   </style>
 </head>
 <body>
@@ -43,7 +50,9 @@
         <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required>
 
         <label for="idCard">Upload ID Card:</label>
-        <input type="file" id="idCard" name="idCard" accept="image/*" required>
+        <input type="file" id="idCard" name="idCard" accept="image/*" onchange="validateFileSize(this)" required>
+        <div id="alert" class="alert">File size must be within 200KB.</div>
+
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
@@ -118,6 +127,22 @@ K.K. Nagar (West), Chennai - 600078." required></textarea>
             }
 
             return true;
+        }
+
+
+
+        function validateFileSize(input) {
+            const file = input.files[0];
+            const alertBox = document.getElementById('alert');
+            if (file) {
+                const maxSize = 200 * 1024; // 200KB in bytes
+                if (file.size > maxSize) {
+                    alertBox.style.display = 'block';
+                    input.value = ''; // Clear the input field
+                } else {
+                    alertBox.style.display = 'none';
+                }
+            }
         }
     </script>
 </body>

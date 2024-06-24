@@ -69,6 +69,15 @@ if (move_uploaded_file($_FILES["idCard"]["tmp_name"], $target_file)) {
     <title>Document upload section</title>
     <link rel="stylesheet" href="css/submit.css">
     <link rel="stylesheet" href="css/toggle.css">
+    <style>
+         .alert {
+            display: none;
+            color: red;
+            margin-top: -15px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -132,9 +141,9 @@ if (move_uploaded_file($_FILES["idCard"]["tmp_name"], $target_file)) {
         
     </div>
     <!-- Form to upload additional documents -->
-
+    
     <div class="container">
-        <h2><span class="span1">*Note:</span>You need to merge all the related documents for your grievance into a single file and upload......(eg:if you have multiple fees document then merge it to one file and upload it)</h2><br><br>
+        <h2><span class="span1">*Note:</span>You need to merge all the related documents for your grievance into a single pdf and upload......(eg:if you have multiple fees document then merge it to one pdf and upload it)</h2><br><br>
         
     <form id="uploadForm" action="save_data.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="name" value="<?php echo htmlspecialchars($name); ?>">
@@ -156,31 +165,40 @@ if (move_uploaded_file($_FILES["idCard"]["tmp_name"], $target_file)) {
         <label for="grievances_details"><h2>Grievances Details :</h2><span class="span1">*Enter the grievance subject with brief description</span></label>
         <textarea class="grievances_details" id="grievances_details" name="grievances_details" rows="10"  required></textarea>
         <label for="document1" id="label1"><h2>Fees Payment Details:</h2></label>
-        <input type="file" name="document1" id="document1" accept=".pdf, .doc, .docx" ><br>
-        
+        <input type="file" name="document1" id="document1" accept=".pdf, .doc, .docx" onchange="validateFileSize(this)"><br>
+        <div id="alert" class="alert">File size must be within 200KB.</div>
+
         <label for="document2" id="label2"><h2>Hall Ticket:</h2></label>
-        <input type="file" name="document2" id="document2" accept=".pdf, .doc, .docx" ><br>
-        
+        <input type="file" name="document2" id="document2" accept=".pdf, .doc, .docx" onchange="validateFileSize(this)"><br>
+        <div id="alert" class="alert">File size must be within 200KB.</div>
+
         <label for="document3" id="label3"><h2>Exam Application Form:</h2></label>
-        <input type="file" name="document3" id="document3" accept=".pdf, .doc, .docx" ><br>
-        
+        <input type="file" name="document3" id="document3" accept=".pdf, .doc, .docx" onchange="validateFileSize(this)"<br>
+        <div id="alert" class="alert">File size must be within 200KB.</div>
+
         <label for="document4" id="label4"><h2>Available Mark Statement:</h2></label>
-        <input type="file" name="document4" id="document4" accept=".pdf, .doc, .docx" ><br>
-        
+        <input type="file" name="document4" id="document4" accept=".pdf, .doc, .docx" onchange="validateFileSize(this)"><br>
+        <div id="alert" class="alert">File size must be within 200KB.</div>
+
         <label for="document5" id="label5"><h2>Consolidated Mark Statement:</h2></label>
-        <input type="file" name="document5" id="document5" accept=".pdf, .doc, .docx" ><br>
-        
+        <input type="file" name="document5" id="document5" accept=".pdf, .doc, .docx" onchange="validateFileSize(this)"><br>
+        <div id="alert" class="alert">File size must be within 200KB.</div>
+
         <label for="document6" id="label6"><h2>Course Completion Certificate:</h2></label>
-        <input type="file" name="document6" id="document6" accept=".pdf, .doc, .docx" ><br>
-        
+        <input type="file" name="document6" id="document6" accept=".pdf, .doc, .docx" onchange="validateFileSize(this)"><br>
+        <div id="alert" class="alert">File size must be within 200KB.</div>
+
         <label for="document7" id="label7"><h2>Application Fees:</h2></label>
-        <input type="file" name="document7" id="document7" accept=".pdf, .doc, .docx" ><br>
-        
+        <input type="file" name="document7" id="document7" accept=".pdf, .doc, .docx" onchange="validateFileSize(this)"><br>
+        <div id="alert" class="alert">File size must be within 200KB.</div>
+
         <label for="document8" id="label8"><h2>Genuine Certificate Fees:</h2></label>
-        <input type="file" name="document8" id="document8" accept=".pdf, .doc, .docx" ><br>
-        
+        <input type="file" name="document8" id="document8" accept=".pdf, .doc, .docx" onchange="validateFileSize(this)"><br>
+        <div id="alert" class="alert">File size must be within 200KB.</div>
+
         <label for="document9" id="label9"><h2>PSTM:</h2></label>
-        <input type="file" name="document9" id="document9" accept=".pdf, .doc, .docx" >
+        <input type="file" name="document9" id="document9" accept=".pdf, .doc, .docx" onchange="validateFileSize(this)">
+        <div id="alert" class="alert">File size must be within 200KB.</div>
 
         <input type="submit" value="Upload and Save Data">
     </form>
@@ -188,7 +206,24 @@ if (move_uploaded_file($_FILES["idCard"]["tmp_name"], $target_file)) {
 </div>
 
 
-<script>document.addEventListener("DOMContentLoaded", function () {
+<script>
+  function validateFileSize(input) {
+            const file = input.files[0];
+            const alertBox = document.getElementById('alert');
+            if (file) {
+                const maxSize = 200 * 1024; // 200KB in bytes
+                if (file.size > maxSize) {
+                    alertBox.style.display = 'block';
+                    input.value = ''; // Clear the input field
+                } else {
+                    alertBox.style.display = 'none';
+                }
+            }
+        }
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
     const grievanceType = "<?php echo htmlspecialchars($grievance_type); ?>";
     const labels = [
         document.getElementById('label1'),

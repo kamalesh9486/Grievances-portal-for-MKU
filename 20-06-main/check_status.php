@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Application Status</title>
     <link rel="stylesheet" href="css/check_status.css">
+    <style>
+        .myspan{
+            color:green;
+        }
+    </style>
 </head>
 <body> 
 <header>
@@ -87,7 +92,8 @@ while ($row = $result->fetch_assoc()) {
 
     $conn->close();
     ?>
-    <a href="status_check.html">Back to Status Check</a>
+    <br><br><br>
+    <a href="status_check.html"><span class="myspan">Back to Status Check</span></a>
 </div>
 
 
