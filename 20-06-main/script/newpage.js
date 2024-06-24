@@ -1,4 +1,5 @@
 
+
 document.addEventListener('DOMContentLoaded', function() {
     const semesterCourses = {
     'UG Courses': [
@@ -161,3 +162,4 @@ const nonSemesterCourses = {
         }
     });
 });
+

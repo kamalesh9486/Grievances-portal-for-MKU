@@ -6,7 +6,12 @@
     <title>Form</title>
     <link rel="stylesheet" href="css/newpage.css">
   <link rel="stylesheet" href="css/toggle.css">
-  
+  <style>
+     .error {
+            color: red;
+            font-size: 12px;
+        }
+  </style>
 </head>
 <body>
 <header>
@@ -26,12 +31,13 @@
     <br><br><br><br><br><br><br><br><br><br><br>
         
     <form action="submit.php" method="POST" enctype="multipart/form-data">
-    <h1 text-color="white">>- Student Information</h1>
+     <u> <h1 text-color="white">>- Student Information</h1></u>
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
 
         <label for="registerNumber">Register Number:</label>
         <input type="text" id="registerNumber" name="registerNumber" required>
+        <small id="error" class="error" style="display: none;"></small>
 
         <label for="mobile">Mobile Number:</label>
         <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required>
@@ -75,17 +81,45 @@ K.K. Nagar (West), Chennai - 600078." required></textarea>
         <label for="main-dropdown">Course Type:</label>
         <select id="main-dropdown" name="main-dropdown" value="main-dropdown">
             <option value="" name="">Select Course Type</option>
+            <option value="">Select Course Type</option>
             <!-- Options will be populated by JavaScript -->
         </select>
 
         <div id="sub-dropdown-container">
+            
             <!-- Sub-dropdown will be populated by JavaScript -->
         </div>
 
         <input type="submit" value="Submit">
     </form>
 
-    
+    <script>
+        document.getElementById('registerNumber').addEventListener('input', validateInput);
+
+        function validateInput() {
+            const regNumber = document.getElementById('registerNumber').value;
+            const errorElement = document.getElementById('error');
+            const regNumberPattern = /^[a-zA-Z0-9]{10}$|^[a-zA-Z0-9]{13}$/;
+
+            if (regNumberPattern.test(regNumber)) {
+                errorElement.style.display = 'none';
+            } else {
+                errorElement.textContent = '* Registration number must be either 10 or 13 characters long and contain only letters and digits.';
+                errorElement.style.display = 'block';
+            }
+        }
+
+        function validateForm() {
+            const regNumber = document.getElementById('registerNumber').value;
+            const regNumberPattern = /^[a-zA-Z0-9]{10}$|^[a-zA-Z0-9]{13}$/;
+
+            if (!regNumberPattern.test(regNumber)) {
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </body>
 <script src="script/newpage.js"></script>
 <script src="script/toggle.js"></script>
