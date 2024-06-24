@@ -65,7 +65,7 @@
   </div>
   <section id="home">
     <div class="hero">
-      <h1>Welcome to Our University !!!</h1><br><br>
+      <h1>Welcome to Our University</h1><br><br>
     </div>
   </section>
   
