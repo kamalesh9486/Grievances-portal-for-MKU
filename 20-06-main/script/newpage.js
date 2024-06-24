@@ -126,6 +126,19 @@ const nonSemesterCourses = {
     "Nano-Biology",
     "Safety in Research and Clinical Laboratories"]
 };
+document.getElementById('batch').addEventListener('input', function (e) {
+    const value = e.target.value;
+    const isValid = /^\d{0,4}-?\d{0,4}$/.test(value);
+    if (!isValid) {
+        e.target.value = value.slice(0, -1);
+    }
+});
+
+
+
+
+
+
 
     document.getElementById('programType').addEventListener('change', function() {
         const selectedProgramType = this.value;

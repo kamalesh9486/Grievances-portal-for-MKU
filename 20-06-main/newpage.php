@@ -69,8 +69,8 @@ K.K. Nagar (West), Chennai - 600078." required></textarea>
             <option value="Genuine Certificate">Genuine Certificate</option>
             <option value="PSTM">PSTM</option>
         </select>
-        <label for="batch">Batch</label>
-        <input type="text" id="batch" name="batch" placeholder="eg:2022-2023">
+        <label for="batch">Batch:</label>
+        <input type="text" id="batch" name="batch" placeholder="eg:2022-2023" required>
         <label for="programType">Program Type:</label>
         <select name="programType" id="programType">
             <option value="">Select Program Type</option>
@@ -123,4 +123,13 @@ K.K. Nagar (West), Chennai - 600078." required></textarea>
 </body>
 <script src="script/newpage.js"></script>
 <script src="script/toggle.js"></script>
+<script>
+    document.getElementById('batch').addEventListener('input', function (e) {
+    const value = e.target.value;
+    const isValid = /^\d{0,4}-?\d{0,4}$/.test(value);
+    if (!isValid) {
+        e.target.value = value.slice(0, -1);
+    }
+});
+</script>
 </html>
