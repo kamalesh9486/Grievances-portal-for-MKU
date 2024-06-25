@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Dob=$_POST['date_of_birth'];
    // echo htmlspecialchars($Dob);
    $batch=$_POST['batch'];
-   $status="in progress";
+   $status="In Process";
    $program_type=$_POST['programType'];
 // Move uploaded file to the desired location
 $target_dir = "uploads/";

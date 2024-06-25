@@ -175,6 +175,18 @@
         
     </div>
 </div>
+<footer>
+    <div class="container">
+      <p>&copy; 2024 MKU. All rights reserved.</p>
+      <p>Contact us: <a href="directordde@gmail.com">directordde@gmail.com</a></p>
+      <ul class="social-media">
+        <li><a href="#"><img src="facebook_icon.png" alt="Facebook"></a></li>
+        <li><a href="#"><img src="twitter_icon.png" alt="Twitter"></a></li>
+        <li><a href="#"><img src="instagram_icon.png" alt="Instagram"></a></li>
+        <li><a href="#"><img src="linkedin_icon.png" alt="LinkedIn"></a></li>
+      </ul>
+    </div>
+  </footer>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

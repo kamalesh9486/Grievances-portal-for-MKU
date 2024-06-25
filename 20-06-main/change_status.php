@@ -16,6 +16,8 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 $registerNumber = isset($_POST['register_number']) ? $_POST['register_number'] : null;
 $timestamp = isset($_POST['timestamp']) ? $_POST['timestamp'] : null;
 $newStatus = isset($_POST['status']) ? $_POST['status'] : null;
+$grievances_message= isset($_POST['comments']) ? $_POST['comments'] : null;
+
 
 // Validate data (optional)
 // You can add validation checks here to ensure data integrity
@@ -28,8 +30,9 @@ if ($conn->connect_error) {
 }
 
 // Prepare statement to update status
-$stmt = $conn->prepare("UPDATE grievances SET status = ? WHERE register_number = ? AND created_at = ?");
-$stmt->bind_param('sss', $newStatus, $registerNumber, $timestamp);
+$stmt = $conn->prepare("UPDATE grievances SET status = ?, detailed_description = ? WHERE register_number = ? AND created_at = ?");
+
+$stmt->bind_param('ssss', $newStatus, $grievances_message, $registerNumber, $timestamp);
 
 // Output message styling
 $outputMessage = "";

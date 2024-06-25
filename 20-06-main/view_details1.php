@@ -67,8 +67,8 @@ $timestamp = isset($_GET['timestamp']) ? $_GET['timestamp'] : null;
 <div class="container">
     <h1>Application Status</h1>
     <?php
-    //  PHP code 
-    
+    // PHP code
+
     // Database configuration
     $servername = "localhost";
     $username = "root";
@@ -83,53 +83,42 @@ $timestamp = isset($_GET['timestamp']) ? $_GET['timestamp'] : null;
         die("Connection failed: " . $conn->connect_error);
     }
 
-    
-
     $stmt = $conn->prepare("SELECT * FROM grievances WHERE register_number = ? AND created_at = ?");
     $stmt->bind_param('ss', $register_Number, $timestamp); // Use 'ss' for two strings
     $stmt->execute();
     $result = $stmt->get_result();
-    
 
-        if ($result->num_rows > 0) {
-            echo "<table>";
+    if ($result->num_rows > 0) {
+        echo "<table>";
+        echo "<tr>";
+        // echo "<th>Name</th>";
+        echo "<th>Register Number</th>";
+        // echo "<th>Course Name</th>";
+        // echo "<th>Mobile</th>";
+        // echo "<th>Email</th>";
+        // echo "<th>Address</th>";
+        echo "<th>Application Submitted On</th>";
+        echo "<th>Grievance Type</th>";
+        echo "<th>Status</th>";
+        echo "</tr>";
+
+        // Output data of each row
+        while ($row = $result->fetch_assoc()) {
             echo "<tr>";
-           // echo "<th>Name</th>";
-            echo "<th>Register Number</th>";
-          //  echo "<th>Course Name</th>";
-          //  echo "<th>Mobile</th>";
-          //  echo "<th>Email</th>";
-           // echo "<th>Address</th>";
-            echo "<th>Application Submitted On</th>";
-            echo "<th>Grievance Type</th>";
-            echo "<th>Status</th>";            echo "</tr>";
-
-            // Output data of each row
-            
-// Your existing PHP code for fetching records
-while ($row = $result->fetch_assoc()) {
-    echo "<tr>";
-    echo "<td>" . htmlspecialchars($row['register_number']) . "</td>";
-    echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
-    echo "<td>" . htmlspecialchars($row['grievance_type']) . "</td>";
-    echo "<td>" . htmlspecialchars($row['status']) . "</td>";
-    echo "</tr>";
-}
-
-
-
-
-            echo "</table>";
-        } else {
-            echo "<p>No records found for the given register number.</p>";
+            echo "<td>" . htmlspecialchars($row['register_number']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['grievance_type']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['status']) . "</td>";
+            echo "</tr>";
         }
+        echo "</table>";
+    } else {
+        echo "<p>No records found for the given register number.</p>";
+    }
 
-        $stmt->close();
-    
-
+    $stmt->close();
     $conn->close();
-    
-?>
+    ?>
     <form action="change_status.php" method="post">
         <input type="hidden" name="register_number" value="<?php echo $register_Number; ?>">
         <input type="hidden" name="timestamp" value="<?php echo $timestamp; ?>">
@@ -141,6 +130,10 @@ while ($row = $result->fetch_assoc()) {
                 <option value="Resolved">Resolved</option>
                 <option value="Rejected">Rejected</option>
             </select>
+        </div>
+        <div class="form-group">
+            <label for="comments">Message to Students About thier Grievances Status:</label>
+            <textarea class="form-control" name="comments" id="comments" rows="3" placeholder="Enter here ...."></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
