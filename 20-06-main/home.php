@@ -8,21 +8,6 @@
   <link rel="stylesheet" href="css/toggle.css">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
-     /* CSS for sliding in from the left for heading */
-     @keyframes slideInLeft {
-      0% {
-        transform: translateX(-100%);
-        opacity: 0;
-      }
-      100% {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-    .slide-in-left {
-      display: inline-block; /* Ensures the heading can be animated */
-      animation: slideInLeft 2s ease-out; /* Duration and easing of the animation */
-    }
     .card {
       height: 100%;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -44,6 +29,23 @@
     }
     #dashboard.open {
       display: block;
+    }
+    .hero {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .loading-text {
+      display: inline-block;
+      font-size: 3em;
+      font-weight: bold;
+      color: white;
+      opacity: 0;
+      animation: loadingEffect 3s infinite;
+    }
+    @keyframes loadingEffect {
+      0% { opacity: 0; transform: translateY(20px); }
+      50% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-20px); }
     }
   </style>
 </head>
@@ -78,12 +80,12 @@
     <button class="dashboard-button">Administration</button>
     <button class="dashboard-button">Library</button>
   </div>
-  <section id="home" class="d-flex justify-content-center align-items-center" style="height: 100vh;">
-  <div class="hero">
-    <h1 class="slide-in-left display-20">Welcome to Our University</h1>
+  <div id="dynamicContent" class="hero">
+    <h1 id="content1" class="loading-text">Welcome to Our University</h1>
+    <h1 id="content2" class="loading-text" style="display: none;">Directorate of Distance Education</h1>
+    <h1 id="content3" class="loading-text" style="display: none;">Learning Management System</h1>
   </div>
-</section>
-
+  
   <div class="container mt-5">
     <div class="d-flex justify-content-between mb-4">
         <!-- Dropdown buttons can be added here if needed -->
@@ -104,7 +106,7 @@
                 <img src="acadamy.jpg" class="card-img-top" alt="Image 2">
                 <div class="card-body">
                     <h5 class="card-title">Academics</h5>
-                    <p class="card-text">Discover our wide range of academic programs and resources</p>
+                    <p class="card-text">Discover our wide range of academic programs </p>
                     <a href="#" class="btn btn-primary">Explore programs</a>
                 </div>
             </div>
@@ -114,7 +116,7 @@
                 <img src="admission.jpeg" class="card-img-top" alt="Image 3">
                 <div class="card-body">
                     <h5 class="card-title">Admissions</h5>
-                    <p class="card-text">Find out how to apply, tuition fees, and financial aid options</p>
+                    <p class="card-text">Find out how to apply, tuition fees, and financial aid options</p><br>
                     <a href="#" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
@@ -124,7 +126,7 @@
                 <img src="research.jpg" class="card-img-top" alt="Image 4">
                 <div class="card-body">
                     <h5 class="card-title">Research</h5>
-                    <p class="card-text">Explore our cutting-edge research initiatives and opportunities</p>
+                    <p class="card-text">Explore our cutting-edge research initiatives and opportunities</p><br>
                     <a href="#" class="btn btn-primary">Discover Research</a>
                 </div>
             </div>
@@ -144,7 +146,7 @@
                 <img src="news.jpeg" class="card-img-top" alt="Image 6">
                 <div class="card-body">
                     <h5 class="card-title">News</h5>
-                    <p class="card-text">Summary of the latest news</p>
+                    <p class="card-text">Summary of the latest news</p><br><br>
                     <a href="#" class="btn btn-primary">Read More</a>
                 </div>
             </div>
@@ -155,7 +157,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Events</h5>
                     <p class="card-text">Detail about upcoming events</p>
-                    <br><br><br>
+                    <br><br><br><br>
                     <a href="#" class="btn btn-primary">Find Out More</a>
                 </div>
             </div>
@@ -165,7 +167,7 @@
                 <img src="tour.png" class="card-img-top" alt="Image 8">
                 <div class="card-body">
                     <h5 class="card-title">Virtual Tour</h5>
-                    <p class="card-text">Interactive campus tour, descriptions of key buildings and facilities</p>
+                    <p class="card-text">Interactive campus tour, descriptions of key buildings </p>
                     <a href="#" class="btn btn-primary">View</a>
                 </div>
             </div>
@@ -173,10 +175,54 @@
         
     </div>
 </div>
+<footer>
+    <div class="container">
+      <p>&copy; 2024 MKU. All rights reserved.</p>
+      <p>Contact us: <a href="directordde@gmail.com">directordde@gmail.com</a></p>
+      <ul class="social-media">
+        <li><a href="#"><img src="facebook_icon.png" alt="Facebook"></a></li>
+        <li><a href="#"><img src="twitter_icon.png" alt="Twitter"></a></li>
+        <li><a href="#"><img src="instagram_icon.png" alt="Instagram"></a></li>
+        <li><a href="#"><img src="linkedin_icon.png" alt="LinkedIn"></a></li>
+      </ul>
+    </div>
+  </footer>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
+ var contents = ["content1", "content2", "content3"];
+    var currentIndex = 0;
+    var contentInterval;
+
+    function toggleContent() {
+      var currentContent = contents[currentIndex];
+      var previousIndex = currentIndex === 0 ? contents.length - 1 : currentIndex - 1;
+
+      // Hide the previous content
+      document.getElementById(contents[previousIndex]).style.display = "none";
+
+      // Show the current content
+      document.getElementById(currentContent).style.display = "block";
+
+      // Increment index or reset to 0
+      currentIndex = (currentIndex + 1) % contents.length;
+    }
+
+    function startLoadingEffect() {
+      contentInterval = setInterval(toggleContent, 3000); // Change content every 3 seconds
+    }
+
+    // Start the loading effect when the window loads
+    window.onload = function() {
+      startLoadingEffect();
+    };
+
+
+
+
+
+
   document.getElementById('toggleButton').addEventListener('click', function() {
   var dashboard = document.getElementById('dashboard');
   dashboard.classList.toggle('open');
