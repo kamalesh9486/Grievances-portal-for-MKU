@@ -1,141 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grievance Details</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Custom CSS -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            padding: 20px;
-        }
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .btn {
-            padding: 5px 10px;
-        }
-        .back-link {
-            display: block;
-            margin-top: 20px;
-            text-align: center;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage</title>
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/toggle.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Your existing styles here */
+    .loading-text {
+      display: inline-block;
+      font-size: 3em;
+      font-weight: bold;
+      color: white;
+      opacity: 0;
+      animation: loadingEffect 3s infinite;
+    }
+    @keyframes loadingEffect {
+      0% { opacity: 0; transform: translateY(20px); }
+      50% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-20px); }
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-    <h1>Application Status</h1>
-    <?php
-    //  PHP code 
-    
-    // Database configuration
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "vinzo1";
+  <header>
+    <img src="CFR.png" width="100%" alt="no image">
+    <div class="container">
+      <button id="toggleButton">☰</button>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#academics">Academics</a></li>
+          <li><a href="#admissions">Admissions</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#student-life">Students</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#virtual-tour">VirtualTour</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <div id="dynamicContent" class="hero">
+    <h1 id="content1" class="loading-text">Welcome to Our University</h1>
+    <h1 id="content2" class="loading-text" style="display: none;">Directorate of Distance Education</h1>
+    <h1 id="content3" class="loading-text" style="display: none;">Learning Management System</h1>
+  </div>
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+  <!-- Your existing section and card content -->
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // JavaScript for toggling content
+    var contents = ["content1", "content2", "content3"];
+    var currentIndex = 0;
+    var contentInterval;
+
+    function toggleContent() {
+      var currentContent = contents[currentIndex];
+      var previousIndex = currentIndex === 0 ? contents.length - 1 : currentIndex - 1;
+
+      // Hide the previous content
+      document.getElementById(contents[previousIndex]).style.display = "none";
+
+      // Show the current content
+      document.getElementById(currentContent).style.display = "block";
+
+      // Increment index or reset to 0
+      currentIndex = (currentIndex + 1) % contents.length;
     }
 
-    
+    function startLoadingEffect() {
+      contentInterval = setInterval(toggleContent, 3000); // Change content every 3 seconds
+    }
 
-    $stmt = $conn->prepare("SELECT * FROM grievances WHERE register_number = ? AND created_at = ?");
-    $stmt->bind_param('ss', $register_Number, $timestamp); // Use 'ss' for two strings
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
+    // Start the loading effect when the window loads
+    window.onload = function() {
+      startLoadingEffect();
+    };
 
-        if ($result->num_rows > 0) {
-            echo "<table>";
-            echo "<tr>";
-           // echo "<th>Name</th>";
-            echo "<th>Register Number</th>";
-          //  echo "<th>Course Name</th>";
-          //  echo "<th>Mobile</th>";
-          //  echo "<th>Email</th>";
-           // echo "<th>Address</th>";
-            echo "<th>Application Submitted On</th>";
-            echo "<th>Grievance Type</th>";
-            echo "<th>Status</th>";
-            echo "<th>Change Status</th>";
-            echo "</tr>";
+    // Toggle dashboard visibility
+    document.getElementById('toggleButton').addEventListener('click', function() {
+      var dashboard = document.getElementById('dashboard');
+      dashboard.classList.toggle('open');
+    });
 
-            // Output data of each row
-            
-// Your existing PHP code for fetching records
-while ($row = $result->fetch_assoc()) {
-    echo "<tr>";
-    echo "<td>" . htmlspecialchars($row['register_number']) . "</td>";
-    echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
-    echo "<td>" . htmlspecialchars($row['grievance_type']) . "</td>";
-    echo "<td>" . htmlspecialchars($row['status']) . "</td>";
-    echo "<td><button type='button' class='btn btn-primary view-details' data-timestamp='" . htmlspecialchars($row['created_at']) . "'>View Details</button></td>";
-    echo "</tr>";
-}
+    document.addEventListener('click', function(event) {
+      var dashboard = document.getElementById('dashboard');
+      var toggleButton = document.getElementById('toggleButton');
+      if (!dashboard.contains(event.target) && !toggleButton.contains(event.target)) {
+        dashboard.classList.remove('open');
+      }
+    });
 
+    // Event listeners for dashboard buttons
+    document.getElementById('button1').addEventListener('click', function() {
+      window.location.href = 'grievances.html'; 
+    });
+    document.getElementById('button2').addEventListener('click', function() {
+      window.location.href = 'status_check.html'; 
+    });
+    document.getElementById('button3').addEventListener('click', function() {
+      window.location.href = 'login.php'; 
+    });
 
-
-
-            echo "</table>";
-        } else {
-            echo "<p>No records found for the given register number.</p>";
-        }
-
-        $stmt->close();
-    
-
-    $conn->close();
-    
-?>
-    <form action="change_status.php" method="post">
-        <input type="hidden" name="register_number" value="<?php echo $register_Number; ?>">
-        <input type="hidden" name="timestamp" value="<?php echo $timestamp; ?>">
-        <div class="form-group">
-            <label for="status">Status:</label>
-            <select class="form-control" name="status" id="status">
-                <option value="">Select Status</option>
-                <option value="In Process">In Process</option>
-                <option value="Resolved">Resolved</option>
-                <option value="Rejected">Rejected</option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    <a href="status_check.html" class="back-link">Back to Status Check</a>
-</div>
-
-<!-- Bootstrap JS and jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </script>
 </body>
 </html>
