@@ -51,7 +51,7 @@
 </head>
 <body>
   <header>
-    <img src="CFR.png" width="100%" alt="no image">
+    <img src="image/CFR.png" width="100%" alt="no image">
     <div class="container">
       <button id="toggleButton">☰</button>
       <nav>
@@ -93,7 +93,7 @@
     <div class="row">
         <div class="col-md-3 mb-4">
             <div class="card h-100">
-                <img src="about.jpeg" class="card-img-top" alt="Image 1">
+                <img src="image/about.jpeg" class="card-img-top" alt="Image 1">
                 <div class="card-body">
                     <h5 class="card-title">About Us</h5>
                     <p class="card-text">Learn more about our history, mission, and values</p>
@@ -103,7 +103,7 @@
         </div>
         <div class="col-md-3 mb-4">
             <div class="card h-100">
-                <img src="acadamy.jpg" class="card-img-top" alt="Image 2">
+                <img src="image/acadamy.jpg" class="card-img-top" alt="Image 2">
                 <div class="card-body">
                     <h5 class="card-title">Academics</h5>
                     <p class="card-text">Discover our wide range of academic programs </p>
@@ -113,7 +113,7 @@
         </div>
         <div class="col-md-3 mb-4">
             <div class="card h-100">
-                <img src="admission.jpeg" class="card-img-top" alt="Image 3">
+                <img src="image/admission.jpeg" class="card-img-top" alt="Image 3">
                 <div class="card-body">
                     <h5 class="card-title">Admissions</h5>
                     <p class="card-text">Find out how to apply, tuition fees, and financial aid options</p><br>
@@ -123,7 +123,7 @@
         </div>
         <div class="col-md-3 mb-4">
             <div class="card h-100">
-                <img src="research.jpg" class="card-img-top" alt="Image 4">
+                <img src="image/research.jpg" class="card-img-top" alt="Image 4">
                 <div class="card-body">
                     <h5 class="card-title">Research</h5>
                     <p class="card-text">Explore our cutting-edge research initiatives and opportunities</p><br>
@@ -133,7 +133,7 @@
         </div>
         <div class="col-md-3 mb-4">
             <div class="card h-100">
-                <img src="student.jpg" class="card-img-top" alt="Image 5">
+                <img src="image/student.jpg" class="card-img-top" alt="Image 5">
                 <div class="card-body">
                     <h5 class="card-title">Student Life</h5>
                     <p class="card-text">Experience vibrant campus life through various activities and organizations</p>
@@ -143,7 +143,7 @@
         </div>
         <div class="col-md-3 mb-4">
             <div class="card h-100">
-                <img src="news.jpeg" class="card-img-top" alt="Image 6">
+                <img src="image/news.jpeg" class="card-img-top" alt="Image 6">
                 <div class="card-body">
                     <h5 class="card-title">News</h5>
                     <p class="card-text">Summary of the latest news</p><br><br>
@@ -153,7 +153,7 @@
         </div>
         <div class="col-md-3 mb-4">
             <div class="card h-100">
-                <img src="event.jpg" class="card-img-top" alt="Image 7">
+                <img src="image/event.jpg" class="card-img-top" alt="Image 7">
                 <div class="card-body">
                     <h5 class="card-title">Events</h5>
                     <p class="card-text">Detail about upcoming events</p>
@@ -164,7 +164,7 @@
         </div>
         <div class="col-md-3 mb-4">
             <div class="card h-100">
-                <img src="tour.png" class="card-img-top" alt="Image 8">
+                <img src="image/tour.png" class="card-img-top" alt="Image 8">
                 <div class="card-body">
                     <h5 class="card-title">Virtual Tour</h5>
                     <p class="card-text">Interactive campus tour, descriptions of key buildings </p>
@@ -180,10 +180,10 @@
       <p>&copy; 2024 MKU. All rights reserved.</p>
       <p>Contact us: <a href="directordde@gmail.com">directordde@gmail.com</a></p>
       <ul class="social-media">
-        <li><a href="#"><img src="facebook_icon.png" alt="Facebook"></a></li>
-        <li><a href="#"><img src="twitter_icon.png" alt="Twitter"></a></li>
-        <li><a href="#"><img src="instagram_icon.png" alt="Instagram"></a></li>
-        <li><a href="#"><img src="linkedin_icon.png" alt="LinkedIn"></a></li>
+        <li><a href="#"><img src="image/facebook_icon.png" alt="Facebook"></a></li>
+        <li><a href="#"><img src="image/twitter_icon.png" alt="Twitter"></a></li>
+        <li><a href="#"><img src="image/instagram_icon.png" alt="Instagram"></a></li>
+        <li><a href="#"><img src="image/linkedin_icon.png" alt="LinkedIn"></a></li>
       </ul>
     </div>
   </footer>

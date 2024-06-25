@@ -164,7 +164,7 @@ th {
 </head>
 <body>
 <header class="header">
-    <img src="CFR.png" alt="Banner image not found" class="banner-img">
+    <img src="image/CFR.png" alt="Banner image not found" class="banner-img">
     <button id="toggleButton" class="toggle-button">☰</button>
     <div id="dashboard" class="dashboard">
         <h2>Dashboard</h2>

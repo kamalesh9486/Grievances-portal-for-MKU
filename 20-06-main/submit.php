@@ -81,7 +81,7 @@ if (move_uploaded_file($_FILES["idCard"]["tmp_name"], $target_file)) {
 </head>
 <body>
 <header>
-    <img src="CFR.png" width="100%" alt="no image">
+    <img src="image/CFR.png" width="100%" alt="no image">
    
         <button id="toggleButton">☰</button>
         <div id="dashboard" class="dashboard">
