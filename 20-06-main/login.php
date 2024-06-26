@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <style>
         body {
-            background-image: url('nn.png'); /* Replace with your background image URL */
+            background-image: url('image/nn.png'); /* Replace with your background image URL */
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <!-- Navbar -->
     <header>
-        <img src="CFR.png" class="d-inline-block align-top" alt="" loading="lazy"> <!-- Replace with your logo image URL -->
+        <img src="image/CFR.png" class="d-inline-block align-top" alt="" loading="lazy"> <!-- Replace with your logo image URL -->
         <button id="toggleButton">☰</button>
     </header>
     <div id="dashboard" class="dashboard">
