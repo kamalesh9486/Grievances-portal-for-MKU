@@ -86,10 +86,11 @@
         }
         echo "</table>";
     } else {
-        echo "<p>No records found for the given timestamp.</p>";
+        echo "<p>No records found for the given Data.</p>";
     }
     ?>
-
+    <br><br><br>
+      <a href="status_check.html" class="back-button">Back to Status Check</a>
 </div>
 
 </body>
