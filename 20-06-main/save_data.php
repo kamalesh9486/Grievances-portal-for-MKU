@@ -18,6 +18,7 @@ if (!is_dir($target_dir)) {
 }
 
 // Handle file uploads
+// Handle file uploads
 $documents = [];
 for ($i = 1; $i <= 9; $i++) {
     $fileInputName = "document" . $i;
@@ -31,9 +32,15 @@ for ($i = 1; $i <= 9; $i++) {
 }
 
 // Prepare and bind
-$stmt = $conn->prepare("INSERT INTO grievances (name, register_number, course_name, date_of_birth, program_type, main_course, mobile, email, address, idcard, grievance_type, batch, status, grievances_details, Fees_Payment_Details, Hall_Ticket, Exam_Application_Form, Available_Mark_Statement, Consolidated_Mark_Statement, Course_Completion_Certificate, Application_Fees, Genuine_Certificate_Fees, PSTM) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$sql = "INSERT INTO grievances (name, register_number, course_name, date_of_birth, program_type, main_course, mobile, email, address, idcard, grievance_type, batch, status, last_appearance, grievances_details, Fees_Payment_Details, Hall_Ticket, Exam_Application_Form, Available_Mark_Statement, Consolidated_Mark_Statement, Course_Completion_Certificate, Application_Fees, Genuine_Certificate_Fees, PSTM) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-$stmt->bind_param("sssssssssssssssssssssss",
+$stmt = $conn->prepare($sql);
+
+if ($stmt === false) {
+    die("Error preparing the statement: " . $conn->error);
+}
+
+$stmt->bind_param("ssssssssssssssssssssssss",
     $_POST['name'],
     $_POST['register_number'],
     $_POST['course_name'],
@@ -47,6 +54,7 @@ $stmt->bind_param("sssssssssssssssssssssss",
     $_POST['grievance_type'],
     $_POST['batch'],
     $_POST['status'],
+    $_POST['month-year'], // Assuming this is the last_appearance column
     $_POST['grievances_details'],
     $documents['document1'],
     $documents['document2'],
@@ -62,11 +70,9 @@ $stmt->bind_param("sssssssssssssssssssssss",
 if ($stmt->execute()) {
     header("Location: confirmation.php?status=success");
     exit();
-
 } else {
     echo "Error: " . $stmt->error;
 }
 
 $stmt->close();
 $conn->close();
-?>

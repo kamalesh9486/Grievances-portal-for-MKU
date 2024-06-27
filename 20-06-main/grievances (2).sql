@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2024 at 06:33 PM
+-- Generation Time: Jun 27, 2024 at 03:58 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -52,17 +52,18 @@ CREATE TABLE `grievances` (
   `Application_Fees` varchar(255) DEFAULT NULL,
   `Genuine_Certificate_Fees` varchar(255) DEFAULT NULL,
   `PSTM` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `detailed_description` longtext DEFAULT NULL,
+  `last_appearance` varchar(7) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `grievances`
 --
 
-INSERT INTO `grievances` (`id`, `name`, `register_number`, `course_name`, `date_of_birth`, `program_type`, `main_course`, `mobile`, `email`, `address`, `idcard`, `grievance_type`, `batch`, `status`, `grievances_details`, `Fees_Payment_Details`, `Hall_Ticket`, `Exam_Application_Form`, `Available_Mark_Statement`, `Consolidated_Mark_Statement`, `Course_Completion_Certificate`, `Application_Fees`, `Genuine_Certificate_Fees`, `PSTM`, `created_at`) VALUES
-(1, 'Murugan', '23332332', 'B.A. History', '0008-03-31', 'nonSemester', 'UG Courses(2)', '9876543213', 'admin@de', 'D.No 362 west street uthupatti', 'Screenshot (10).png', 'Genuine Certificate', '2003-2003', 'in progress', 'hi', 'uploads/dummy pdf.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-06-17 12:43:04'),
-(2, 'Murugan', '23332332', 'B.A. History', '0008-03-31', 'nonSemester', 'UG Courses(2)', '9876543213', 'admin@de', 'D.No 362 west street uthupatti', 'Screenshot (10).png', 'Genuine Certificate', '2003-2003', 'in progress', 'hi', 'uploads/dummy pdf.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-06-17 12:44:41'),
-(3, 'Murugan', '23222322', 'B.A. History [Tamil]', '0003-03-31', 'semester', 'UG Courses(2)', '9876543213', 'admin@de', 'D.No 362 west street uthupatti', 'my image.jpg', 'Current Mark Statement', '2003-2332', 'in progress', 'hi', NULL, NULL, NULL, 'uploads/dummy pdf.pdf', NULL, NULL, NULL, NULL, NULL, '2024-06-17 16:25:53');
+INSERT INTO `grievances` (`id`, `name`, `register_number`, `course_name`, `date_of_birth`, `program_type`, `main_course`, `mobile`, `email`, `address`, `idcard`, `grievance_type`, `batch`, `status`, `grievances_details`, `Fees_Payment_Details`, `Hall_Ticket`, `Exam_Application_Form`, `Available_Mark_Statement`, `Consolidated_Mark_Statement`, `Course_Completion_Certificate`, `Application_Fees`, `Genuine_Certificate_Fees`, `PSTM`, `created_at`, `detailed_description`, `last_appearance`) VALUES
+(1, 'Dinesh Kumar', '2023DDEMCA001', 'M.C.A. (Master of Computer Applications)', '2002-02-04', 'semester', 'PG Courses', '9898898989', 'dinesh@gmail.com', 'madurai', 'station.jpg', 'Result', '2023-2024', 'Resolved', 'exam fees issue', 'uploads/dummy pdf.pdf', 'uploads/dummy pdf.pdf', 'uploads/dummy pdf.pdf', NULL, NULL, NULL, NULL, NULL, NULL, '2024-06-26 05:25:43', 'certificate dispatched to ur address', NULL),
+(2, 'Murugan', '23mcs2002s', 'B.A. History [Tamil]', '2222-02-22', 'semester', 'UG Courses', '9876543213', 'admin@de', 'D.No 362 west street uthupatti', 'my image.jpg', 'Course Completion Certificate', '2023-2024', 'Rejected', 's', 'uploads/dummy pdf.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-06-27 13:53:45', 'sorry', '2023-03');
 
 --
 -- Indexes for dumped tables
@@ -82,7 +83,7 @@ ALTER TABLE `grievances`
 -- AUTO_INCREMENT for table `grievances`
 --
 ALTER TABLE `grievances`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

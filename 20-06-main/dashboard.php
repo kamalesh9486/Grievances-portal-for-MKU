@@ -127,6 +127,7 @@ if ($stmt) {
                 <th>Grievance Type</th>
                 <th>Batch</th>
                 <th>Status</th>
+                <th>Last Appearance</th>
                 <th>Grievance</th>
                 <th>Fees Payment Details</th>
                 <th>Hall Ticket</th>
@@ -156,8 +157,9 @@ if ($stmt) {
                     <td><a class='document-link' href='uploads/<?php echo $row['idcard']; ?>' target='_blank'>View Document</a></td>
                     <td><?php echo $row['grievance_type']; ?></td>
                     <td><?php echo $row['batch']; ?></td>
-                    <td><button type='button' class='btn btn-primary view-details'><?php echo $row['status']; ?></button></td>
 
+                    <td><button type='button' class='btn btn-primary view-details'><?php echo $row['status']; ?></button></td>
+                    <td><?php echo $row['last_appearance']; ?></td>
                     <td><?php echo $row['grievances_details']; ?></td>
                     <td><a class='document-link' href='<?php echo $row['Fees_Payment_Details']; ?>' target='_blank'>View Document</a></td>
                     <td><a class='document-link' href='<?php echo $row['Hall_Ticket']; ?>' target='_blank'>View Document</a></td>
@@ -189,7 +191,7 @@ if ($stmt) {
 
                 // Extract the register number and timestamp from the row
                 const registerNumber = row.querySelector('td:nth-child(3)').innerText; // Adjust selector if needed
-                const timestamp = row.querySelector('td:nth-child(25)').innerText; // Assuming data-timestamp attribute exists
+                const timestamp = row.querySelector('td:nth-child(26)').innerText; // Assuming data-timestamp attribute exists
 
                 // Construct the URL with both parameters
                 const url = `view_details1.php?register_number=${encodeURIComponent(registerNumber)}&timestamp=${encodeURIComponent(timestamp)}`;
