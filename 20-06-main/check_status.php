@@ -13,7 +13,7 @@
 </head>
 <body> 
 <header>
-    <img src="CFR.png" alt="Banner image not found">
+    <img src="image/CFR.png" alt="Banner image not found">
     <button id="toggleButton">☰</button>
     <div id="dashboard" class="dashboard">
         <h2>Dashboard</h2>

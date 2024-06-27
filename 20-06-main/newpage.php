@@ -22,7 +22,7 @@
 </head>
 <body>
 <header>
-        <img src="CFR.png" width="100%" alt="no image">
+        <img src="image/CFR.png" width="100%" alt="no image">
         <button id="toggleButton">☰</button>
         <div id="dashboard" class="dashboard">
             <h2>Dashboard</h2>

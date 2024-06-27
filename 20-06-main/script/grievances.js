@@ -9,8 +9,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-document.getElementById('toggleButton').addEventListener('click', function() {
-    var dashboard = document.getElementById('dashboard');
-    dashboard.classList.toggle('open');
-  });
-  
