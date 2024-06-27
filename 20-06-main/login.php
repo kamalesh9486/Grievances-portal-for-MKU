@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <option value="PG Courses">PG Section</option>
                                     <option value="Post Graduate Diploma">PG Diploma Section</option>
                                     <option value="Diploma Courses">Diploma Section</option>
-                                    <option value="Certified Courses">Certified Section</option>
+                                    <option value="Certificate Courses">Certificate Section</option>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary btn-block">Login</button>
