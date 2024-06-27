@@ -8,7 +8,6 @@ if (!isset($_SESSION['admin_id'])) {
 }
 
 $course_type = $_SESSION['course_type'];
-echo htmlspecialchars($course_type);
 $stmt = $conn->prepare("SELECT * FROM grievances WHERE main_course = ?");
 if ($stmt) {
     $stmt->bind_param('s', $course_type);
