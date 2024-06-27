@@ -162,7 +162,10 @@ if (move_uploaded_file($_FILES["idCard"]["tmp_name"], $target_file)) {
         <input type="hidden" name="batch" value="<?php echo htmlspecialchars($batch); ?>">
         <input type="hidden" name="status" value="<?php echo htmlspecialchars($status); ?>">
 
-        
+        <label for="month-year">Your Last appearence :</label>
+        <input type="month" id="month-year" name="month-year" required>
+
+
         <label for="grievances_details"><h2>Grievances Details :</h2><span class="span1">*Enter the grievance subject with brief description</span></label>
         <textarea class="grievances_details" id="grievances_details" name="grievances_details" rows="10"  required></textarea>
         <label for="document1" id="label1"><h2>Fees Payment Details:</h2></label>
