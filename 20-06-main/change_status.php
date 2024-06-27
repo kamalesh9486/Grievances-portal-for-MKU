@@ -17,7 +17,7 @@ $registerNumber = isset($_POST['register_number']) ? $_POST['register_number'] :
 $timestamp = isset($_POST['timestamp']) ? $_POST['timestamp'] : null;
 $newStatus = isset($_POST['status']) ? $_POST['status'] : null;
 $grievances_message= isset($_POST['comments']) ? $_POST['comments'] : null;
-
+$email= isset($_POST['email']) ? $_POST['email'] : null;
 
 // Validate data (optional)
 // You can add validation checks here to ensure data integrity
@@ -52,7 +52,54 @@ $conn->close();
 // Output the message
 echo $outputMessage;
 ?>
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
+// Include PHPMailer files
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
+
+    $user_email = $email;
+    $subject = "Grievances ";
+    $message = $grievances_message;
+
+    $mail = new PHPMailer(true);
+    try {
+        // Server settings
+        $mail->SMTPDebug = 0; // Enable verbose debug output
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'vinzocenzo27@gmail.com';
+        $mail->Password = 'viep golf ahww ffby';
+        $mail->SMTPSecure = 'tls'; // Enable TLS encryption; `ssl` also accepted
+        $mail->Port = 587; // TCP port to connect to (587 for TLS)
+
+        // Recipients
+        $mail->setFrom('vinzocenzo27@gmail.com', 'Admin');
+        $mail->addAddress($user_email); // Add a recipient
+
+        // Content
+        $mail->isHTML(true); // Set email format to HTML
+        $mail->Subject = $subject;
+        $mail->Body    = $message;
+        $mail->AltBody = strip_tags($message); // For non-HTML mail clients
+
+        $mail->send();
+        $outputMessage="<div class='alert alert-success' role='alert'> Email Message has been sent</div>";
+       // echo 'Message has been sent';
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+
+// Output the message
+echo $outputMessage;
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

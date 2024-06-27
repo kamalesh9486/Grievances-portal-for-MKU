@@ -95,7 +95,7 @@ $timestamp = isset($_GET['timestamp']) ? $_GET['timestamp'] : null;
         echo "<th>Register Number</th>";
         // echo "<th>Course Name</th>";
         // echo "<th>Mobile</th>";
-        // echo "<th>Email</th>";
+         echo "<th>Email</th>";
         // echo "<th>Address</th>";
         echo "<th>Application Submitted On</th>";
         echo "<th>Grievance Type</th>";
@@ -106,22 +106,28 @@ $timestamp = isset($_GET['timestamp']) ? $_GET['timestamp'] : null;
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";
             echo "<td>" . htmlspecialchars($row['register_number']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+            $email=$row['email'];
             echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
             echo "<td>" . htmlspecialchars($row['grievance_type']) . "</td>";
             echo "<td>" . htmlspecialchars($row['status']) . "</td>";
             echo "</tr>";
+
+
         }
         echo "</table>";
     } else {
         echo "<p>No records found for the given register number.</p>";
     }
-
+    
+   
     $stmt->close();
     $conn->close();
     ?>
     <form action="change_status.php" method="post">
         <input type="hidden" name="register_number" value="<?php echo $register_Number; ?>">
         <input type="hidden" name="timestamp" value="<?php echo $timestamp; ?>">
+        <input type="hidden" name="email" value="<?php echo $email; ?>">
         <div class="form-group">
             <label for="status">Status:</label>
             <select class="form-control" name="status" id="status">

@@ -177,7 +177,7 @@ if (move_uploaded_file($_FILES["idCard"]["tmp_name"], $target_file)) {
         <div id="alert" class="alert">File size must be within 200KB.</div>
 
         <label for="document3" id="label3"><h2>Exam Application Form:</h2></label>
-        <input type="file" name="document3" id="document3" accept=".pdf, .doc, .docx" onchange="validateFileSize(this)"<br>
+        <input type="file" name="document3" id="document3" accept=".pdf, .doc, .docx" onchange="validateFileSize(this)"><br>
         <div id="alert" class="alert">File size must be within 200KB.</div>
 
         <label for="document4" id="label4"><h2>Available Mark Statement:</h2></label>

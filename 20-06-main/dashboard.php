@@ -108,7 +108,7 @@ if ($stmt) {
     </style>
 </head>
 <body>
-    <button id="Back-Button"> <a href="login.php">Back</a></button>
+    <button id="Back-Button" onclick="openNewPage()">Back</button>
     <h1>Welcome, Admin</h1>
     <table id="grievancesTable" class="display">
         <thead>
@@ -176,7 +176,8 @@ if ($stmt) {
         </tbody>
     </table>
     <script>
-   
+
+
         document.querySelectorAll('.document-link').forEach(link => {
             if (!link.getAttribute('href') || link.getAttribute('href') === 'uploads/') {
                 link.classList.add('disabled-link');
@@ -200,6 +201,10 @@ if ($stmt) {
                 window.location.href = url;
             });
         });
+
+        function openNewPage() {
+            window.location.href = 'login.php';
+    }
     </script>
 </body>
 </html>
