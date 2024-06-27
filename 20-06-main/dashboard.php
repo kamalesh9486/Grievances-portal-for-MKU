@@ -86,6 +86,7 @@ if ($stmt) {
     </style>
 </head>
 <body>
+    <button id="Back-Button"> <a href="login.php">Back</a></button>
     <h1>Welcome, Admin</h1>
     <table id="grievancesTable" class="display">
         <thead>
@@ -151,6 +152,7 @@ if ($stmt) {
         </tbody>
     </table>
     <script>
+   
         document.querySelectorAll('.document-link').forEach(link => {
             if (!link.getAttribute('href') || link.getAttribute('href') === 'uploads/') {
                 link.classList.add('disabled-link');
