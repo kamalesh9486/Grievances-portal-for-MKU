@@ -30,6 +30,28 @@ if ($stmt) {
 <head>
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
+    <style>  #Back-Button {
+    display: inline-block;
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Some padding */
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+    border: none; /* Remove borders */
+    font-size: 16px; /* Increase font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+  }
+
+  #Back-Button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+
+  #Back-Button a {
+    color: white; /* White text */
+    text-decoration: none; /* Remove underline */
+  }</style>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -86,6 +108,7 @@ if ($stmt) {
     </style>
 </head>
 <body>
+    <button id="Back-Button"> <a href="login.php">Back</a></button>
     <h1>Welcome, Admin</h1>
     <table id="grievancesTable" class="display">
         <thead>
@@ -151,6 +174,7 @@ if ($stmt) {
         </tbody>
     </table>
     <script>
+   
         document.querySelectorAll('.document-link').forEach(link => {
             if (!link.getAttribute('href') || link.getAttribute('href') === 'uploads/') {
                 link.classList.add('disabled-link');
