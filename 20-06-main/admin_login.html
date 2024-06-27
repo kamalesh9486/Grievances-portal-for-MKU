@@ -1,93 +1,117 @@
+<!-- This is the HTML code for the admin login page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login form</title>
+    <meta charset="UTF-8"> <!-- Sets the character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configures the viewport -->
+    <title>login form</title> <!-- Sets the title of the page -->
     <style>
+      /* Resets the default styles of all elements */
       *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url(nn.png) no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-.wrapper{
-    width: 420px;
-    background: transparent;
-    border:2px solid rgba(255, 255, 255, .2);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-    color: #fff;
-    border-radius: 10px;
-    padding: 30px 40px;
-}
-.wrapper h1{
-    font-size: 36px;
-    text-align: center;
-}
-.wrapper .input-box{
-    width: 100%;
-    height: 60px;
-    position: relative;
-    margin-top: 20px;
-}
-.input-box input{
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    
-    border-radius: 2px;
-    font-size: 16px;
-    color: #fff;
-    padding: 20px 40px 20px 20px;
-}
-.input-box input::placeholder{
-    color: #fff;
 
+/* Styles the body of the page */
+body{
+    display: flex; /* Aligns the content in the center of the page */
+    justify-content: center; /* Centers the content horizontally */
+    align-items: center; /* Centers the content vertically */
+    min-height: 100vh; /* Sets the minimum height of the page to the height of the viewport */
+    background: url(nn.png) no-repeat; /* Sets the background image of the page */
+    background-size: cover; /* Sets the background image to cover the entire page */
+    background-position: center; /* Centers the background image */
 }
+
+/* Styles the wrapper div */
+.wrapper{
+    width: 420px; /* Sets the width of the wrapper div */
+    background: transparent; /* Sets the background color of the wrapper div to transparent */
+    border:2px solid rgba(255, 255, 255, .2); /* Sets the border of the wrapper div */
+    backdrop-filter: blur(20px); /* Applies a blur effect to the background of the wrapper div */
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2); /* Adds a shadow effect to the wrapper div */
+    color: #fff; /* Sets the text color of the wrapper div to white */
+    border-radius: 10px; /* Rounds the corners of the wrapper div */
+    padding: 30px 40px; /* Sets the padding of the wrapper div */
+}
+
+/* Styles the h1 element inside the wrapper div */
+.wrapper h1{
+    font-size: 36px; /* Sets the font size of the h1 element */
+    text-align: center; /* Centers the text of the h1 element */
+}
+
+/* Styles the input-box div */
+.wrapper .input-box{
+    width: 100%; /* Sets the width of the input-box div to 100% */
+    height: 60px; /* Sets the height of the input-box div */
+    position: relative; /* Positions the input-box div relative to its normal position */
+    margin-top: 20px; /* Adds margin to the top of the input-box div */
+}
+
+/* Styles the input element inside the input-box div */
+.input-box input{
+    width: 100%; /* Sets the width of the input element to 100% */
+    height: 100%; /* Sets the height of the input element to 100% */
+    background: transparent; /* Sets the background color of the input element to transparent */
+    border: none; /* Removes the border of the input element */
+    outline: none; /* Removes the outline of the input element */
+    border: 2px solid rgba(255, 255, 255, 0.2); /* Sets the border of the input element */
+    border-radius: 2px; /* Rounds the corners of the input element */
+    font-size: 16px; /* Sets the font size of the input element */
+    color: #fff; /* Sets the text color of the input element to white */
+    padding: 20px 40px 20px 20px; /* Sets the padding of the input element */
+}
+
+/* Styles the placeholder text of the input element */
+.input-box input::placeholder{
+    color: #fff; /* Sets the color of the placeholder text to white */
+}
+
+/* Styles the button element */
 .wrapper .btn{
-    width: 100%;
-    height: 45px;
-    background: #fff;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    cursor: pointer;
-    color: #333;
-    font-weight: 700;
-    margin: 15px 0 10px;
+    width: 100%; /* Sets the width of the button element to 100% */
+    height: 45px; /* Sets the height of the button element */
+    background: #fff; /* Sets the background color of the button element to white */
+    border: none; /* Removes the border of the button element */
+    outline: none; /* Removes the outline of the button element */
+    border-radius: 40px; /* Rounds the corners of the button element */
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1); /* Adds a shadow effect to the button element */
+    cursor: pointer; /* Changes the cursor to a pointer when hovering over the button element */
+    color: #333; /* Sets the text color of the button element to dark gray */
+    font-weight: 700; /* Sets the font weight of the button element to bold */
+    margin: 15px 0 10px; /* Adds margin to the top, bottom, and right of the button element */
 }
+
+/* Styles the button element when hovered over */
 .wrapper .btn:hover{
-    background: #333;
-    color: #fff;
+    background: #333; /* Sets the background color of the button element to dark gray */
+    color: #fff; /* Sets the text color of the button element to white */
 }
 
     </style>
 </head>
 <body>
+    <!-- Creates a wrapper div to hold the login form -->
     <div class="wrapper">
+        <!-- Creates a form element to hold the login inputs -->
         <form action="authenticate.php" method="POST" enctype="multipart/form-data">
+            <!-- Creates an h1 element to display the login heading -->
             <h1> Admin Login </h1>
+            <!-- Creates a div element to hold the username input -->
             <div class="input-box">
+                <!-- Creates an input element to hold the username input -->
                 <input type="text" name="username" id="username" placeholder="Username" required>
             </div>
             
+            <!-- Creates a div element to hold the password input -->
             <div class="input-box">
+                <!-- Creates an input element to hold the password input -->
                 <input type="password" name="password" id="password" placeholder="Password" required>
             </div>
+            <!-- Creates a button element to submit the login form -->
             <button type="submit" class="btn">Login</button>
 
           
