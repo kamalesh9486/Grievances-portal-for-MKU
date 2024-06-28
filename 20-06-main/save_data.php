@@ -19,6 +19,7 @@ if (!is_dir($target_dir)) {
 // Handle file uploads
 // Handle file uploads
 // Handle file uploads
+// Handle file uploads
 $documents = [];
 for ($i = 1; $i <= 9; $i++) {
     $fileInputName = "document" . $i;

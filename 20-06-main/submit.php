@@ -210,7 +210,7 @@ if (move_uploaded_file($_FILES["idCard"]["tmp_name"], $target_file)) {
         <input type="file" name="document9" id="document9" accept=".pdf, .doc, .docx" onchange="validateFileSize(this)">
         <div id="alert" class="alert">File size must be within 200KB.</div>
 
-        <input type="submit" value="Upload and Save Data">
+        <input type="submit" value="Upload">
     </form>
     </div>
 </div>
