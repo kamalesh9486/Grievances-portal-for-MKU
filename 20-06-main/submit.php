@@ -77,6 +77,9 @@ if (move_uploaded_file($_FILES["idCard"]["tmp_name"], $target_file)) {
             margin-bottom: 20px;
             font-size: 14px;
         }
+        small{
+            color:gray;
+        }
     </style>
 </head>
 <body>
@@ -162,8 +165,11 @@ if (move_uploaded_file($_FILES["idCard"]["tmp_name"], $target_file)) {
         <input type="hidden" name="batch" value="<?php echo htmlspecialchars($batch); ?>">
         <input type="hidden" name="status" value="<?php echo htmlspecialchars($status); ?>">
 
-        <label for="month-year">Your Last appearence :</label>
-        <input type="month" id="month-year" name="month-year" required>
+        <label for="month-year">Your Last appearance :</label>
+        <input type="month" id="month-year" name="month-year" required><br>
+        <br>
+        <small>*if you are applying for the exam result then enter the last appearance of exam </small><br>
+        <small>*Otherwise , just enter the last appearance of your need</small>
 
 
         <label for="grievances_details"><h2>Grievances Details :</h2><span class="span1">*Enter the grievance subject with brief description</span></label>
@@ -177,7 +183,7 @@ if (move_uploaded_file($_FILES["idCard"]["tmp_name"], $target_file)) {
         <div id="alert" class="alert">File size must be within 200KB.</div>
 
         <label for="document3" id="label3"><h2>Exam Application Form:</h2></label>
-        <input type="file" name="document3" id="document3" accept=".pdf, .doc, .docx" onchange="validateFileSize(this)"<br>
+        <input type="file" name="document3" id="document3" accept=".pdf, .doc, .docx" onchange="validateFileSize(this)"><br>
         <div id="alert" class="alert">File size must be within 200KB.</div>
 
         <label for="document4" id="label4"><h2>Available Mark Statement:</h2></label>
